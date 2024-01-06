@@ -1,9 +1,14 @@
 import React, { useEffect } from 'react'
 import { getAuth, signOut } from "firebase/auth";
-import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Grid from '@mui/material/Grid';
+import Grouplist from '../Components/Grouplist';
+import Friendrequest from '../Components/Friendrequest';
+import Friends from '../Components/Friends';
+import Mygroup from '../Components/Mygroup';
+import Userlist from '../Components/Userlist';
+import Block from '../Components/Block';
 
 
 const Home = () => {
@@ -25,15 +30,18 @@ const Home = () => {
           <Grid container spacing={2}>
 
           <Grid item xs={4}>
-          Farhan
+          <Grouplist/>
+          <Friendrequest/>
           </Grid>
 
           <Grid item xs={4}>
-          Farhan
+          <Friends/>
+          <Mygroup/>
           </Grid>
 
           <Grid item xs={4}>
-          Farhan
+          <Userlist/>
+          <Block/>
           </Grid>
 
           </Grid>
