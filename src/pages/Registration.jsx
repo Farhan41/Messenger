@@ -63,7 +63,7 @@ const Registration = () => {
 
     setLoad(false)
 
-    createUserWithEmailAndPassword(auth, formData.email, formData.password).then(()=>{
+    createUserWithEmailAndPassword(auth, formData.email, formData.password).then((user)=>{
       updateProfile(auth.currentUser, {
         displayName: formData.fullname,
         photoURL: "https://firebasestorage.googleapis.com/v0/b/messenger-7ee84.appspot.com/o/avatar.jpg?alt=media&token=4f37203e-67c6-41bc-8938-b2cf23424d21"
@@ -82,7 +82,8 @@ const Registration = () => {
             },[5000])
   
         }).then(()=>{
-          set(push(ref(db, 'users')), {
+          console.log(user.user.uid)
+          set(ref(db, 'users'/+user.user.uid ), {
             username: formData.fullname,
             email: formData.email,
             profile_picture :"https://firebasestorage.googleapis.com/v0/b/messenger-7ee84.appspot.com/o/avatar.jpg?alt=media&token=4f37203e-67c6-41bc-8938-b2cf23424d21"

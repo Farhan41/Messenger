@@ -29,17 +29,17 @@ const Home = () => {
           <>
           <Grid container spacing={2}>
 
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={6} md={4}>
           <Grouplist/>
           <Friendrequest/>
           </Grid>
 
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={6} md={4}>
           <Friends/>
           <Mygroup/>
           </Grid>
 
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={6} md={4}>
           <Userlist/>
           <Block/>
           </Grid>
