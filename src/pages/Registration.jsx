@@ -63,12 +63,15 @@ const Registration = () => {
 
     setLoad(false)
 
-    createUserWithEmailAndPassword(auth, formData.email, formData.password).then((user)=>{
+    createUserWithEmailAndPassword(auth, formData.email, formData.password)
+    .then((user)=>{
       updateProfile(auth.currentUser, {
         displayName: formData.fullname,
         photoURL: "https://firebasestorage.googleapis.com/v0/b/messenger-7ee84.appspot.com/o/avatar.jpg?alt=media&token=4f37203e-67c6-41bc-8938-b2cf23424d21"
-      }).then(()=>{
-        sendEmailVerification(auth.currentUser).then(()=>{
+      })
+      .then(()=>{
+        sendEmailVerification(auth.currentUser)
+        .then(()=>{
           setFormData({
             fullname: "",
             email: "",
@@ -81,18 +84,23 @@ const Registration = () => {
             navigate("/login")
             },[5000])
   
-        }).then(()=>{
-          console.log(user.user.uid)
-          set(ref(db, 'users'/+user.user.uid ), {
+        })
+          .then(()=>{
+
+            console.log(user.user.uid)
+            set(ref(db, "users"+ user.user.uid), {
             username: formData.fullname,
             email: formData.email,
             profile_picture :"https://firebasestorage.googleapis.com/v0/b/messenger-7ee84.appspot.com/o/avatar.jpg?alt=media&token=4f37203e-67c6-41bc-8938-b2cf23424d21"
           });
+
         })
       })
       
       
-    }).catch((error) => {
+    })
+    
+    .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;  
       if(errorCode.includes("email") ){

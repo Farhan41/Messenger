@@ -5,7 +5,7 @@
 .sidebar{
     background: #5F35F5;
     height: 95vh;
-    width: 85%;
+    width: 15%;
     margin: auto; 
     margin-top: 2.5vh;
     text-align: center;
@@ -52,7 +52,7 @@
     position: absolute;
     top: -15px;
     left: -25px;
-    width: 151px;
+    width: 180px;
     height: 55px;
     background: white;
     content: "";
@@ -100,6 +100,24 @@
 .list:last-child{
     border-bottom: 0;
 }
+
+@media screen and (max-width: 600px) {
+    
+    .sidebar {
+        padding-top:75px;
+    }
+    .sidebar ul li {
+        margin: 23px;
+        list-style: none;
+    }
+    .sidebarimg {
+        width: 50px;
+        height: 50px;
+    }
+    .box .list{
+        justify-content: space-between;
+    }
+  }
     
     
     

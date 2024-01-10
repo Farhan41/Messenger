@@ -69,23 +69,11 @@ const Login = () => {
 
     
     signInWithEmailAndPassword(auth, formData.email, formData.password).then((user)=>{
-      console.log(user.user.emailVerified)
-      // if(user.user.emailVerified){
+
         navigate("/home")
         dispatch(loggeduser(user.user))
         localStorage.setItem("user", JSON.stringify(user.user) )
-      // }else{
-      //   toast.error('To login please verfiy your email!', {
-      //     position: "bottom-left",
-      //     autoClose: 5000,
-      //     hideProgressBar: false,
-      //     closeOnClick: true,
-      //     pauseOnHover: true,
-      //     draggable: true,  
-      //     progress: undefined,
-      //     theme: "dark",
-      //     });
-      // }
+     
     })
     
   }

@@ -31,7 +31,7 @@ const Sidebar = () => {
   let [url, setUrl] = useState("home")
 
   return (
-    <div className='sidebar'>
+    <div className='sidebar fixed top-0 left-2'>
         <img className='sidebarimg' src={userInfo.photoURL} />
         <h1>{userInfo.displayName}</h1>
 

@@ -11,16 +11,15 @@ const RouteLayout = () => {
   return (
     <>
 
-    <Grid container spacing={2}>
+    <Grid container spacing={4}>
 
-    <Grid item xs={2}>
+    <Grid className='relative' item xs={2}>
     <Sidebar/>
     </Grid>
 
     <Grid item xs={10}>
     <Outlet/>
     </Grid>
- 
     </Grid>
 
 
