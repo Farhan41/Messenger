@@ -90,7 +90,6 @@
 
 .list{
     display: flex;
-    align-items: center;
     column-gap: 20px;
     border-bottom: 2px solid #000;
     padding-bottom: 10px;
@@ -101,10 +100,25 @@
     border-bottom: 0;
 }
 
+.list-left{
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+}
+.list-right{
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 20px;
+}
+
+
+
 @media screen and (max-width: 600px) {
     
     .sidebar {
         padding-top:75px;
+        width: 35%;
     }
     .sidebar ul li {
         margin: 23px;
@@ -116,6 +130,30 @@
     }
     .box .list{
         justify-content: space-between;
+    }
+    .list{
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        align-items: center;
+    }
+    
+        .list-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+ 
+    .list-right{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 20px;
+    }
+
+    .css-480o17-MuiGrid-root>.MuiGrid-item {
+        padding-top: 16px !important;
     }
   }
     

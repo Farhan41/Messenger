@@ -13,11 +13,11 @@ const RouteLayout = () => {
 
     <Grid container spacing={4}>
 
-    <Grid className='relative' item xs={2}>
+    <Grid className='relative' item  md={2} xs={0}>
     <Sidebar/>
     </Grid>
 
-    <Grid item xs={10}>
+    <Grid item  md={10} xs={12}>
     <Outlet/>
     </Grid>
     </Grid>
