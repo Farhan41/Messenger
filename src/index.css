@@ -52,7 +52,7 @@
     position: absolute;
     top: -15px;
     left: -25px;
-    width: 180px;
+    width: 250px;
     height: 55px;
     background: white;
     content: "";
@@ -117,17 +117,14 @@
 @media screen and (max-width: 600px) {
     
     .sidebar {
-        padding-top:75px;
-        width: 35%;
+        z-index: 2;
+        width: 45%;
     }
     .sidebar ul li {
-        margin: 23px;
+        /* margin: 23px; */
         list-style: none;
     }
-    .sidebarimg {
-        width: 50px;
-        height: 50px;
-    }
+    
     .box .list{
         justify-content: space-between;
     }
