@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from '@mui/material/Button';
 import batman from '../assets/batman.png';
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, remove, set, push } from "firebase/database";
 import { useEffect, useState } from 'react';
 import {useSelector} from 'react-redux'
 
@@ -16,17 +16,28 @@ const Friendrequest = () => {
         onValue(friendrequestRef, (snapshot) => {
             let arr =[]
         snapshot.forEach(item=>{
-            // console.log('fire',item.val().whoreceiveid)
-            // console.log('react',userInfo.uid)
             if(item.val().whoreceiveid == userInfo.uid){
-               arr.push(item.val())
+               arr.push({...item.val(),frid:item.key})
            }
         });
         setReqlist(arr)  
         console.log("test",reqlist)
 });
     },[])
-    console.log("test1",reqlist)
+
+    let handleDelete = (item) =>{
+        console.log(item.frid)
+        remove(ref(db, 'friendrequest/'+item.frid))
+    }
+
+    let handleAccept =(item)=>{
+        set(push(ref(db, 'friends/')), {
+           ...item
+          }).then(()=>{
+            remove(ref(db, 'friendrequest/'+item.frid))
+          })
+    }
+    
   return (
     <div className='box'>
     <h3>Friend Request</h3>
@@ -37,8 +48,8 @@ const Friendrequest = () => {
         <h4 className='uppercase'>{item.whosendname}</h4>
        </div>
        <div className='list-right'>
-       <Button variant="contained">Accept</Button>
-        <Button variant="contained" color="error">Delete</Button>
+       <Button onClick={()=>handleAccept(item)} variant="contained">Accept</Button>
+        <Button onClick={()=>handleDelete(item)} variant="contained" color="error">Delete</Button>
        </div>
     </div> 
     ))}  

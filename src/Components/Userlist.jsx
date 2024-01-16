@@ -10,6 +10,7 @@ const Userlist = () => {
   const db = getDatabase();
   let [userslist, setUserslist] = useState([]);
   let [reqlist, setReqlist] = useState([]);
+  let [friendlist, setFriendlist] = useState([]);
   let userInfo = useSelector((state)=>state.loggeduser.value);
   
 
@@ -42,6 +43,20 @@ const Userlist = () => {
 });
 },[])
 
+useEffect(()=>{
+  const friendrequestRef = ref(db, 'friends');
+  onValue(friendrequestRef, (snapshot) => {
+      let arr =[]
+  snapshot.forEach(item=>{
+      
+      
+         arr.push(item.val().whoreceiveid+item.val().whosendid)
+
+  });
+  setFriendlist(arr)  
+});
+},[])
+
   
 
   let handleFriendRequest = (info) => {
@@ -64,14 +79,17 @@ const Userlist = () => {
      <img width="50" height="50" src={batman} />
      <h4 className='uppercase'>{item.username}</h4>
 
-     {reqlist.includes(item.whoreceiveid+item.whosendid) || reqlist.includes(item.whosendid+item.whoreceiveid) 
+     {reqlist.includes(item.userid+userInfo.uid) || reqlist.includes(userInfo.uid+item.userid) 
      ?
-     <Button onClick={() => handleFriendRequest(item)} variant="contained">+</Button>
-     :
      <Button color="error" variant="contained">Pending</Button>
+     :
+     friendlist.includes(item.userid+userInfo.uid) || friendlist.includes(userInfo.uid+item.userid)?
+     <Button variant="contained" color='success'>Friend</Button>
+     :
+     <Button onClick={() => handleFriendRequest(item)} variant="contained">+</Button>
     }
 
-    </div>
+    </div>      
 
    ))}
 </div>

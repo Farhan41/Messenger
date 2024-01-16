@@ -88,7 +88,7 @@ const Registration = () => {
           .then(()=>{
 
             console.log(user.user.uid)
-            set(ref(db, "users"+ user.user.uid), {
+            set(ref(db, "users/"+ user.user.uid), {
             username: formData.fullname,
             email: formData.email,
             profile_picture :"https://firebasestorage.googleapis.com/v0/b/messenger-7ee84.appspot.com/o/avatar.jpg?alt=media&token=4f37203e-67c6-41bc-8938-b2cf23424d21"

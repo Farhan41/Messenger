@@ -101,9 +101,10 @@
 }
 
 .list-left{
-    width: 70%;
+    width: 40%;
     display: flex;
     justify-content: flex-start;
+    align-items: center;
 }
 .list-right{
     width: 30%;
@@ -114,7 +115,7 @@
 
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
     
     .sidebar {
         z-index: 2;
